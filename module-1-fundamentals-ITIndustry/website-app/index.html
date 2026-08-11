@@ -1,0 +1,3264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Kalpit Thanki - Data Analyst Portfolio. Data analysis, SQL, Python, Power BI, Excel and business intelligence."
+  >
+
+  <title>Kalpit Thanki | Data Analyst</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Arial', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(14,165,233,.25)',
+            card: '0 20px 60px rgba(15,23,42,.12)'
+          },
+          animation: {
+            float: 'float 5s ease-in-out infinite',
+            pulseSlow: 'pulseSlow 3s ease-in-out infinite',
+            slideUp: 'slideUp .8s ease-out',
+            fadeIn: 'fadeIn 1s ease-out'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': {
+                transform: 'translateY(0)'
+              },
+              '50%': {
+                transform: 'translateY(-12px)'
+              }
+            },
+            pulseSlow: {
+              '0%, 100%': {
+                opacity: '.5'
+              },
+              '50%': {
+                opacity: '1'
+              }
+            },
+            slideUp: {
+              '0%': {
+                opacity: '0',
+                transform: 'translateY(30px)'
+              },
+              '100%': {
+                opacity: '1',
+                transform: 'translateY(0)'
+              }
+            },
+            fadeIn: {
+              '0%': {
+                opacity: '0'
+              },
+              '100%': {
+                opacity: '1'
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #0ea5e9;
+      color: white;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        #0ea5e9,
+        #06b6d4,
+        #6366f1
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .gradient-border {
+      position: relative;
+    }
+
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(14,165,233,.7),
+        rgba(99,102,241,.4),
+        transparent
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .dark .glass {
+      background: rgba(2,6,23,.78);
+    }
+
+    .grid-pattern {
+      background-image:
+        linear-gradient(
+          rgba(14,165,233,.06) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(14,165,233,.06) 1px,
+          transparent 1px
+        );
+      background-size: 40px 40px;
+    }
+
+    .hero-glow {
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(14,165,233,.16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(99,102,241,.14),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 50% 90%,
+          rgba(6,182,212,.12),
+          transparent 30%
+        );
+    }
+
+    .bar {
+      transition: height .8s ease;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: #0ea5e9;
+      transition: width .3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .project-card {
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(14,165,233,.12);
+    }
+
+    .skill-line {
+      height: 7px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .dark .skill-line {
+      background: #1e293b;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        #0284c7,
+        #06b6d4,
+        #6366f1
+      );
+    }
+
+    .timeline-line {
+      background: linear-gradient(
+        to bottom,
+        #0ea5e9,
+        #6366f1,
+        transparent
+      );
+    }
+
+    .typing {
+      border-right: 2px solid #0ea5e9;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+
+      .hero-title {
+        font-size: 2.7rem;
+        line-height: 1.05;
+      }
+
+      .dashboard-number {
+        font-size: 1.35rem;
+      }
+
+      .mobile-padding {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body
+  class="
+    bg-slate-50
+    text-slate-900
+    dark:bg-slate-950
+    dark:text-white
+    transition-colors
+    duration-300
+  "
+>
+
+<!-- ========================================================= -->
+<!-- NAVBAR -->
+<!-- ========================================================= -->
+
+<header class="fixed top-0 left-0 right-0 z-50">
+
+  <nav
+    class="
+      glass
+      border-b
+      border-slate-200/70
+      dark:border-slate-800/70
+    "
+  >
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="h-20 flex items-center justify-between">
+
+        <!-- LOGO -->
+
+        <a href="#home" class="flex items-center gap-3">
+
+          <div
+            class="
+              w-11
+              h-11
+              rounded-2xl
+              bg-gradient-to-br
+              from-sky-500
+              to-indigo-600
+              flex
+              items-center
+              justify-center
+              text-white
+              font-black
+              shadow-lg
+              shadow-sky-500/20
+            "
+          >
+            KT
+          </div>
+
+          <div class="hidden sm:block">
+
+            <div class="font-extrabold text-lg leading-none">
+              Kalpit Thanki
+            </div>
+
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              Data Analyst
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <div class="hidden lg:flex items-center gap-8">
+
+          <a href="#home" class="nav-link active text-sm font-semibold">
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="nav-link text-sm font-semibold text-slate-600 dark:text-slate-300"
+          >
+            About
+          </a>
+
+          <a
+            href="#skills"
+            class="nav-link text-sm font-semibold text-slate-600 dark:text-slate-300"
+          >
+            Skills
+          </a>
+
+          <a
+            href="#experience"
+            class="nav-link text-sm font-semibold text-slate-600 dark:text-slate-300"
+          >
+            Experience
+          </a>
+
+          <a
+            href="#projects"
+            class="nav-link text-sm font-semibold text-slate-600 dark:text-slate-300"
+          >
+            Projects
+          </a>
+
+          <a
+            href="#contact"
+            class="nav-link text-sm font-semibold text-slate-600 dark:text-slate-300"
+          >
+            Contact
+          </a>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="flex items-center gap-2">
+
+          <button
+            id="themeBtn"
+            aria-label="Toggle dark mode"
+            class="
+              w-10
+              h-10
+              rounded-xl
+              flex
+              items-center
+              justify-center
+              bg-slate-100
+              dark:bg-slate-800
+              hover:bg-sky-100
+              dark:hover:bg-slate-700
+              transition
+            "
+          >
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+
+
+          <a
+            href="#contact"
+            class="
+              hidden
+              sm:inline-flex
+              px-5
+              py-2.5
+              rounded-xl
+              bg-sky-600
+              hover:bg-sky-700
+              text-white
+              font-bold
+              text-sm
+              transition
+            "
+          >
+            Let's Talk
+          </a>
+
+
+          <!-- MOBILE MENU BUTTON -->
+
+          <button
+            id="menuBtn"
+            aria-label="Open menu"
+            class="
+              lg:hidden
+              w-10
+              h-10
+              rounded-xl
+              bg-slate-100
+              dark:bg-slate-800
+              flex
+              items-center
+              justify-center
+            "
+          >
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- MOBILE MENU -->
+
+      <div
+        id="mobileMenu"
+        class="hidden lg:hidden pb-5"
+      >
+
+        <div
+          class="
+            rounded-2xl
+            border
+            border-slate-200
+            dark:border-slate-800
+            bg-white
+            dark:bg-slate-900
+            p-3
+            shadow-xl
+          "
+        >
+
+          <a href="#home" class="mobile-link">
+            <i data-lucide="home"></i>
+            Home
+          </a>
+
+          <a href="#about" class="mobile-link">
+            <i data-lucide="user"></i>
+            About
+          </a>
+
+          <a href="#skills" class="mobile-link">
+            <i data-lucide="code-2"></i>
+            Skills
+          </a>
+
+          <a href="#experience" class="mobile-link">
+            <i data-lucide="briefcase"></i>
+            Experience
+          </a>
+
+          <a href="#projects" class="mobile-link">
+            <i data-lucide="folder-kanban"></i>
+            Projects
+          </a>
+
+          <a href="#contact" class="mobile-link">
+            <i data-lucide="mail"></i>
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section
+  id="home"
+  class="
+    min-h-screen
+    pt-32
+    pb-20
+    relative
+    overflow-hidden
+    grid-pattern
+    hero-glow
+  "
+>
+
+  <!-- Decorative circles -->
+
+  <div
+    class="
+      absolute
+      top-32
+      -left-24
+      w-72
+      h-72
+      bg-sky-400/10
+      rounded-full
+      blur-3xl
+    "
+  ></div>
+
+  <div
+    class="
+      absolute
+      bottom-10
+      -right-24
+      w-96
+      h-96
+      bg-indigo-500/10
+      rounded-full
+      blur-3xl
+    "
+  ></div>
+
+
+  <div
+    class="
+      max-w-7xl
+      mx-auto
+      px-4
+      sm:px-6
+      lg:px-8
+      relative
+      z-10
+    "
+  >
+
+    <div
+      class="
+        grid
+        lg:grid-cols-[1.05fr_.95fr]
+        gap-12
+        lg:gap-20
+        items-center
+        min-h-[calc(100vh-160px)]
+      "
+    >
+
+      <!-- LEFT -->
+
+      <div class="animate-slideUp">
+
+        <div
+          class="
+            inline-flex
+            items-center
+            gap-2
+            px-4
+            py-2
+            rounded-full
+            bg-sky-50
+            dark:bg-sky-950/40
+            border
+            border-sky-200
+            dark:border-sky-900
+            text-sky-700
+            dark:text-sky-300
+            text-sm
+            font-bold
+          "
+        >
+
+          <span
+            class="
+              w-2.5
+              h-2.5
+              rounded-full
+              bg-emerald-500
+              animate-pulse
+            "
+          ></span>
+
+          Available for opportunities
+
+        </div>
+
+
+        <p
+          class="
+            mt-7
+            text-sky-600
+            dark:text-sky-400
+            font-bold
+            tracking-widest
+            uppercase
+            text-sm
+          "
+        >
+          Data Analyst • BI • Analytics
+        </p>
+
+
+        <h1
+          class="
+            hero-title
+            mt-4
+            text-5xl
+            sm:text-6xl
+            lg:text-7xl
+            font-black
+            tracking-tight
+            leading-[1.05]
+          "
+        >
+
+          Turning
+
+          <span class="gradient-text">
+            Data
+          </span>
+
+          Into
+
+          <span class="gradient-text">
+            Decisions.
+          </span>
+
+        </h1>
+
+
+        <p
+          class="
+            mt-7
+            text-lg
+            sm:text-xl
+            leading-8
+            text-slate-600
+            dark:text-slate-400
+            max-w-2xl
+          "
+        >
+          Hi, I'm
+          <strong class="text-slate-900 dark:text-white">
+            Kalpit Thanki
+          </strong>.
+          I analyze complex datasets and transform them into meaningful
+          dashboards, reports, and actionable business insights.
+        </p>
+
+
+        <!-- BUTTONS -->
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-9">
+
+          <a
+            href="#projects"
+            class="
+              inline-flex
+              items-center
+              justify-center
+              gap-2
+              px-7
+              py-4
+              rounded-2xl
+              bg-sky-600
+              hover:bg-sky-700
+              text-white
+              font-bold
+              shadow-xl
+              shadow-sky-600/20
+              transition
+            "
+          >
+            Explore My Work
+            <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+          </a>
+
+
+          <a
+            href="#contact"
+            class="
+              inline-flex
+              items-center
+              justify-center
+              gap-2
+              px-7
+              py-4
+              rounded-2xl
+              border
+              border-slate-300
+              dark:border-slate-700
+              hover:border-sky-500
+              hover:text-sky-600
+              dark:hover:text-sky-400
+              font-bold
+              transition
+            "
+          >
+            Let's Connect
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+
+        </div>
+
+
+        <!-- MINI STATS -->
+
+        <div
+          class="
+            grid
+            grid-cols-2
+            sm:grid-cols-4
+            gap-3
+            mt-12
+            max-w-2xl
+          "
+        >
+
+          <div class="stat-box">
+            <strong>20+</strong>
+            <span>Projects</span>
+          </div>
+
+          <div class="stat-box">
+            <strong>10+</strong>
+            <span>Dashboards</span>
+          </div>
+
+          <div class="stat-box">
+            <strong>5+</strong>
+            <span>Tools</span>
+          </div>
+
+          <div class="stat-box">
+            <strong>3+</strong>
+            <span>Years</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT DASHBOARD -->
+
+      <div class="relative animate-float">
+
+        <div
+          class="
+            absolute
+            -inset-4
+            bg-gradient-to-r
+            from-sky-500/10
+            to-indigo-500/10
+            rounded-[2rem]
+            blur-2xl
+          "
+        ></div>
+
+
+        <div
+          class="
+            gradient-border
+            relative
+            rounded-[2rem]
+            bg-white
+            dark:bg-slate-900
+            shadow-2xl
+            p-4
+            sm:p-6
+          "
+        >
+
+          <!-- Dashboard top -->
+
+          <div class="flex items-center justify-between">
+
+            <div>
+
+              <p class="text-xs text-slate-500">
+                ANALYTICS OVERVIEW
+              </p>
+
+              <h2 class="text-lg sm:text-xl font-black mt-1">
+                Business Performance
+              </h2>
+
+            </div>
+
+            <div
+              class="
+                w-11
+                h-11
+                rounded-2xl
+                bg-sky-100
+                dark:bg-sky-950
+                text-sky-600
+                flex
+                items-center
+                justify-center
+              "
+            >
+              <i data-lucide="bar-chart-3"></i>
+            </div>
+
+          </div>
+
+
+          <!-- Dashboard stats -->
+
+          <div class="grid grid-cols-2 gap-3 mt-6">
+
+            <div class="dashboard-stat">
+
+              <span>Revenue</span>
+
+              <strong class="dashboard-number">
+                $84.2K
+              </strong>
+
+              <small class="text-emerald-500">
+                ↑ 18.4%
+              </small>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <span>Customers</span>
+
+              <strong class="dashboard-number">
+                12.8K
+              </strong>
+
+              <small class="text-emerald-500">
+                ↑ 12.7%
+              </small>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <span>Conversion</span>
+
+              <strong class="dashboard-number">
+                8.42%
+              </strong>
+
+              <small class="text-emerald-500">
+                ↑ 4.2%
+              </small>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+              <span>Growth</span>
+
+              <strong class="dashboard-number">
+                24.6%
+              </strong>
+
+              <small class="text-emerald-500">
+                ↑ 9.8%
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <!-- Chart -->
+
+          <div
+            class="
+              mt-5
+              p-4
+              sm:p-5
+              rounded-2xl
+              bg-slate-50
+              dark:bg-slate-800/80
+            "
+          >
+
+            <div class="flex justify-between items-center">
+
+              <div>
+                <p class="text-sm font-bold">
+                  Monthly Revenue
+                </p>
+
+                <p class="text-xs text-slate-500 mt-1">
+                  Performance trend
+                </p>
+              </div>
+
+              <span
+                class="
+                  px-3
+                  py-1
+                  rounded-full
+                  bg-emerald-100
+                  dark:bg-emerald-950
+                  text-emerald-600
+                  text-xs
+                  font-bold
+                "
+              >
+                +18.4%
+              </span>
+
+            </div>
+
+
+            <div
+              class="
+                h-44
+                mt-6
+                flex
+                items-end
+                gap-2
+                sm:gap-3
+              "
+            >
+
+              <div class="bar chart-bar h-[35%]"></div>
+              <div class="bar chart-bar h-[45%]"></div>
+              <div class="bar chart-bar h-[40%]"></div>
+              <div class="bar chart-bar h-[58%]"></div>
+              <div class="bar chart-bar h-[52%]"></div>
+              <div class="bar chart-bar h-[70%]"></div>
+              <div class="bar chart-bar h-[63%]"></div>
+              <div class="bar chart-bar h-[82%]"></div>
+              <div class="bar chart-bar h-[75%]"></div>
+              <div class="bar chart-bar h-[95%]"></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Dashboard footer -->
+
+          <div
+            class="
+              flex
+              flex-col
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+              gap-3
+              mt-5
+            "
+          >
+
+            <div class="flex items-center gap-2">
+
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+
+              <span class="text-xs text-slate-500">
+                Data updated recently
+              </span>
+
+            </div>
+
+            <span class="text-xs text-slate-500">
+              SQL • Python • Power BI
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- ABOUT -->
+<!-- ========================================================= -->
+
+<section
+  id="about"
+  class="
+    py-20
+    sm:py-24
+    bg-white
+    dark:bg-slate-900
+  "
+>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Text -->
+
+      <div>
+
+        <p class="section-kicker">
+          ABOUT ME
+        </p>
+
+        <h2 class="section-heading">
+          Analytical thinking with
+          <span class="gradient-text">
+            business impact.
+          </span>
+        </h2>
+
+        <p class="section-description">
+          I'm a Data Analyst focused on discovering patterns, measuring
+          performance, and communicating insights that help organizations
+          make smarter decisions.
+        </p>
+
+        <p class="section-description">
+          My workflow combines SQL, Python, Excel, Power BI, and data
+          visualization to move from raw data to a clear story.
+        </p>
+
+
+        <div class="grid grid-cols-2 gap-4 mt-8">
+
+          <div class="about-point">
+            <i data-lucide="database"></i>
+            <div>
+              <strong>Data Analysis</strong>
+              <p>Clean and explore complex datasets.</p>
+            </div>
+          </div>
+
+          <div class="about-point">
+            <i data-lucide="layout-dashboard"></i>
+            <div>
+              <strong>Dashboards</strong>
+              <p>Create clear KPI dashboards.</p>
+            </div>
+          </div>
+
+          <div class="about-point">
+            <i data-lucide="lightbulb"></i>
+            <div>
+              <strong>Insights</strong>
+              <p>Turn patterns into decisions.</p>
+            </div>
+          </div>
+
+          <div class="about-point">
+            <i data-lucide="presentation"></i>
+            <div>
+              <strong>Reporting</strong>
+              <p>Communicate results effectively.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Profile card -->
+
+      <div
+        class="
+          relative
+          rounded-[2rem]
+          bg-slate-950
+          text-white
+          overflow-hidden
+          p-6
+          sm:p-8
+          shadow-2xl
+        "
+      >
+
+        <div
+          class="
+            absolute
+            -top-20
+            -right-20
+            w-60
+            h-60
+            rounded-full
+            bg-sky-500/20
+            blur-3xl
+          "
+        ></div>
+
+        <div
+          class="
+            absolute
+            -bottom-20
+            -left-20
+            w-60
+            h-60
+            rounded-full
+            bg-indigo-500/20
+            blur-3xl
+          "
+        ></div>
+
+
+        <div class="relative">
+
+          <div class="flex items-center gap-5">
+
+            <div
+              class="
+                w-20
+                h-20
+                rounded-3xl
+                bg-gradient-to-br
+                from-sky-400
+                to-indigo-600
+                flex
+                items-center
+                justify-center
+                text-2xl
+                font-black
+              "
+            >
+              KT
+            </div>
+
+            <div>
+
+              <h3 class="text-2xl font-black">
+                Kalpit Thanki
+              </h3>
+
+              <p class="text-sky-400 mt-1">
+                Data Analyst
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="
+              grid
+              grid-cols-2
+              gap-4
+              mt-8
+            "
+          >
+
+            <div class="dark-stat">
+              <span>Primary Focus</span>
+              <strong>Analytics</strong>
+            </div>
+
+            <div class="dark-stat">
+              <span>Specialization</span>
+              <strong>BI</strong>
+            </div>
+
+            <div class="dark-stat">
+              <span>Database</span>
+              <strong>SQL</strong>
+            </div>
+
+            <div class="dark-stat">
+              <span>Visualization</span>
+              <strong>Power BI</strong>
+            </div>
+
+          </div>
+
+
+          <div class="mt-8">
+
+            <p class="text-sm text-slate-400 mb-3">
+              Core strengths
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+
+              <span class="pill">
+                Problem Solving
+              </span>
+
+              <span class="pill">
+                Data Storytelling
+              </span>
+
+              <span class="pill">
+                Critical Thinking
+              </span>
+
+              <span class="pill">
+                Business Analysis
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SKILLS -->
+<!-- ========================================================= -->
+
+<section
+  id="skills"
+  class="
+    py-20
+    sm:py-24
+    bg-slate-50
+    dark:bg-slate-950
+  "
+>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <p class="section-kicker">
+        MY TOOLKIT
+      </p>
+
+      <h2 class="section-heading">
+        Tools for every stage of
+        <span class="gradient-text">
+          data analysis.
+        </span>
+      </h2>
+
+      <p class="section-description">
+        From extracting raw data to building polished dashboards,
+        these are the technologies I use to solve analytical problems.
+      </p>
+
+    </div>
+
+
+    <!-- TOOL GRID -->
+
+    <div
+      class="
+        grid
+        grid-cols-2
+        sm:grid-cols-3
+        lg:grid-cols-6
+        gap-4
+        sm:gap-5
+        mt-12
+      "
+    >
+
+      <div class="tool-card">
+        <div class="tool-icon bg-blue-100 text-blue-700">
+          SQL
+        </div>
+        <h3>SQL</h3>
+        <p>Advanced</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon bg-yellow-100 text-yellow-700">
+          PY
+        </div>
+        <h3>Python</h3>
+        <p>Advanced</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon bg-green-100 text-green-700">
+          BI
+        </div>
+        <h3>Power BI</h3>
+        <p>Advanced</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon bg-orange-100 text-orange-700">
+          XL
+        </div>
+        <h3>Excel</h3>
+        <p>Advanced</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon bg-purple-100 text-purple-700">
+          T
+        </div>
+        <h3>Tableau</h3>
+        <p>Intermediate</p>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon bg-slate-200 text-slate-700">
+          G
+        </div>
+        <h3>Git</h3>
+        <p>Intermediate</p>
+      </div>
+
+    </div>
+
+
+    <!-- SKILL BARS -->
+
+    <div
+      class="
+        max-w-4xl
+        mx-auto
+        mt-14
+        bg-white
+        dark:bg-slate-900
+        border
+        border-slate-200
+        dark:border-slate-800
+        rounded-3xl
+        p-6
+        sm:p-8
+      "
+    >
+
+      <div class="space-y-7">
+
+        <div>
+
+          <div class="flex justify-between gap-4 mb-2 text-sm font-bold">
+            <span>SQL & Database Analysis</span>
+            <span class="text-sky-600">90%</span>
+          </div>
+
+          <div class="skill-line">
+            <div class="skill-fill w-[90%]"></div>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="flex justify-between gap-4 mb-2 text-sm font-bold">
+            <span>Power BI & Visualization</span>
+            <span class="text-sky-600">88%</span>
+          </div>
+
+          <div class="skill-line">
+            <div class="skill-fill w-[88%]"></div>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="flex justify-between gap-4 mb-2 text-sm font-bold">
+            <span>Python & Pandas</span>
+            <span class="text-sky-600">85%</span>
+          </div>
+
+          <div class="skill-line">
+            <div class="skill-fill w-[85%]"></div>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="flex justify-between gap-4 mb-2 text-sm font-bold">
+            <span>Excel & Reporting</span>
+            <span class="text-sky-600">92%</span>
+          </div>
+
+          <div class="skill-line">
+            <div class="skill-fill w-[92%]"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- EXPERIENCE -->
+<!-- ========================================================= -->
+
+<section
+  id="experience"
+  class="
+    py-20
+    sm:py-24
+    bg-white
+    dark:bg-slate-900
+  "
+>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <p class="section-kicker">
+        EXPERIENCE
+      </p>
+
+      <h2 class="section-heading">
+        My professional
+        <span class="gradient-text">
+          journey.
+        </span>
+      </h2>
+
+    </div>
+
+
+    <div class="relative mt-14">
+
+      <!-- Timeline -->
+
+      <div
+        class="
+          hidden
+          md:block
+          absolute
+          left-1/2
+          top-0
+          bottom-0
+          w-px
+          timeline-line
+        "
+      ></div>
+
+
+      <!-- EXPERIENCE 1 -->
+
+      <div class="relative md:grid md:grid-cols-2 md:gap-16 mb-14">
+
+        <div class="md:text-right md:pr-8">
+
+          <span class="experience-date">
+            2024 — Present
+          </span>
+
+          <h3 class="experience-title">
+            Data Analyst
+          </h3>
+
+          <p class="experience-company">
+            Business Intelligence Team
+          </p>
+
+        </div>
+
+
+        <div
+          class="
+            hidden
+            md:block
+            absolute
+            left-1/2
+            -translate-x-1/2
+            top-1
+            w-4
+            h-4
+            rounded-full
+            bg-sky-500
+            ring-8
+            ring-sky-500/10
+          "
+        ></div>
+
+
+        <div class="mt-5 md:mt-0 md:pl-8">
+
+          <div class="experience-card">
+
+            <p>
+              Analyzed business and customer datasets to uncover
+              performance trends, improve reporting processes, and
+              support data-driven decision making.
+            </p>
+
+            <ul class="experience-list">
+
+              <li>
+                Built interactive Power BI dashboards.
+              </li>
+
+              <li>
+                Developed SQL queries for recurring analysis.
+              </li>
+
+              <li>
+                Automated Excel-based reporting workflows.
+              </li>
+
+              <li>
+                Presented actionable insights to stakeholders.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPERIENCE 2 -->
+
+      <div class="relative md:grid md:grid-cols-2 md:gap-16 mb-14">
+
+        <div class="md:col-start-2 md:pl-8">
+
+          <span class="experience-date">
+            2023 — 2024
+          </span>
+
+          <h3 class="experience-title">
+            Junior Data Analyst
+          </h3>
+
+          <p class="experience-company">
+            Analytics & Reporting
+          </p>
+
+        </div>
+
+
+        <div
+          class="
+            hidden
+            md:block
+            absolute
+            left-1/2
+            -translate-x-1/2
+            top-1
+            w-4
+            h-4
+            rounded-full
+            bg-indigo-500
+            ring-8
+            ring-indigo-500/10
+          "
+        ></div>
+
+
+        <div class="mt-5 md:mt-0 md:col-start-1 md:row-start-1 md:pr-8">
+
+          <div class="experience-card">
+
+            <p>
+              Supported reporting, data preparation, dashboard development,
+              and exploratory analysis across multiple business datasets.
+            </p>
+
+            <ul class="experience-list">
+
+              <li>
+                Cleaned and validated large datasets.
+              </li>
+
+              <li>
+                Created KPI reports and business summaries.
+              </li>
+
+              <li>
+                Assisted with SQL data extraction.
+              </li>
+
+              <li>
+                Developed visualization prototypes.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPERIENCE 3 -->
+
+      <div class="relative md:grid md:grid-cols-2 md:gap-16">
+
+        <div class="md:text-right md:pr-8">
+
+          <span class="experience-date">
+            2022 — 2023
+          </span>
+
+          <h3 class="experience-title">
+            Data Analytics Intern
+          </h3>
+
+          <p class="experience-company">
+            Analytics Projects
+          </p>
+
+        </div>
+
+
+        <div
+          class="
+            hidden
+            md:block
+            absolute
+            left-1/2
+            -translate-x-1/2
+            top-1
+            w-4
+            h-4
+            rounded-full
+            bg-purple-500
+            ring-8
+            ring-purple-500/10
+          "
+        ></div>
+
+
+        <div class="mt-5 md:mt-0 md:pl-8">
+
+          <div class="experience-card">
+
+            <p>
+              Worked on exploratory data analysis and visualization
+              projects using Python, Excel, SQL, and business datasets.
+            </p>
+
+            <ul class="experience-list">
+
+              <li>
+                Performed exploratory data analysis.
+              </li>
+
+              <li>
+                Cleaned CSV and Excel datasets.
+              </li>
+
+              <li>
+                Created analytical dashboards.
+              </li>
+
+              <li>
+                Documented key findings and recommendations.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- PROJECTS -->
+<!-- ========================================================= -->
+
+<section
+  id="projects"
+  class="
+    py-20
+    sm:py-24
+    bg-slate-50
+    dark:bg-slate-950
+  "
+>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+
+      <div>
+
+        <p class="section-kicker">
+          PROJECTS
+        </p>
+
+        <h2 class="section-heading">
+          Selected
+          <span class="gradient-text">
+            analytics work.
+          </span>
+        </h2>
+
+      </div>
+
+      <p class="max-w-xl text-slate-500 dark:text-slate-400 leading-7">
+        Practical projects demonstrating data cleaning, SQL analysis,
+        visualization, dashboard design, and business insight generation.
+      </p>
+
+    </div>
+
+
+    <div
+      class="
+        grid
+        md:grid-cols-2
+        xl:grid-cols-3
+        gap-6
+        mt-12
+      "
+    >
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-sky-500
+            to-blue-700
+          "
+        >
+
+          <i
+            data-lucide="bar-chart-3"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            01
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            POWER BI
+          </span>
+
+          <h3 class="project-title">
+            Sales Performance Dashboard
+          </h3>
+
+          <p class="project-text">
+            Interactive dashboard tracking revenue, sales targets,
+            regional performance, products, and monthly KPIs.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">Power BI</span>
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">Excel</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-violet-500
+            to-purple-700
+          "
+        >
+
+          <i
+            data-lucide="users"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            02
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            PYTHON
+          </span>
+
+          <h3 class="project-title">
+            Customer Churn Analysis
+          </h3>
+
+          <p class="project-text">
+            Explored customer behavior to identify churn patterns,
+            high-risk customer segments, and retention opportunities.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Pandas</span>
+            <span class="tech-pill">Matplotlib</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-orange-500
+            to-red-600
+          "
+        >
+
+          <i
+            data-lucide="shopping-cart"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            03
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            SQL
+          </span>
+
+          <h3 class="project-title">
+            E-Commerce Analytics
+          </h3>
+
+          <p class="project-text">
+            Analyzed orders, customers, products, and revenue to
+            understand purchasing patterns and business performance.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">Excel</span>
+            <span class="tech-pill">Power BI</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-emerald-500
+            to-teal-700
+          "
+        >
+
+          <i
+            data-lucide="trending-up"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            04
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            EXCEL
+          </span>
+
+          <h3 class="project-title">
+            Financial KPI Report
+          </h3>
+
+          <p class="project-text">
+            Built an automated reporting model for tracking revenue,
+            expenses, profit margins, and financial KPIs.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">Excel</span>
+            <span class="tech-pill">Pivot Tables</span>
+            <span class="tech-pill">Power Query</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-pink-500
+            to-rose-700
+          "
+        >
+
+          <i
+            data-lucide="activity"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            05
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            TABLEAU
+          </span>
+
+          <h3 class="project-title">
+            Business Insights Dashboard
+          </h3>
+
+          <p class="project-text">
+            Created an interactive visualization system to compare
+            business performance across products and regions.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">Tableau</span>
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">Analytics</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PROJECT -->
+
+      <article class="project-card project-box">
+
+        <div
+          class="
+            project-visual
+            bg-gradient-to-br
+            from-cyan-500
+            to-indigo-700
+          "
+        >
+
+          <i
+            data-lucide="database"
+            class="w-16 h-16 text-white"
+          ></i>
+
+          <span class="project-number">
+            06
+          </span>
+
+        </div>
+
+
+        <div class="p-6">
+
+          <span class="project-category">
+            DATA ANALYSIS
+          </span>
+
+          <h3 class="project-title">
+            Data Cleaning Pipeline
+          </h3>
+
+          <p class="project-text">
+            Designed a repeatable process for cleaning, validating,
+            transforming, and preparing datasets for analysis.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Pandas</span>
+            <span class="tech-pill">SQL</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SERVICES -->
+<!-- ========================================================= -->
+
+<section
+  class="
+    py-20
+    sm:py-24
+    bg-white
+    dark:bg-slate-900
+  "
+>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center max-w-3xl mx-auto">
+
+      <p class="section-kicker">
+        WHAT I DO
+      </p>
+
+      <h2 class="section-heading">
+        From raw data to
+        <span class="gradient-text">
+          real insights.
+        </span>
+      </h2>
+
+    </div>
+
+
+    <div
+      class="
+        grid
+        md:grid-cols-3
+        gap-6
+        mt-12
+      "
+    >
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          <i data-lucide="database"></i>
+        </div>
+
+        <h3>
+          Data Cleaning
+        </h3>
+
+        <p>
+          Clean, transform, validate, and prepare raw datasets
+          for reliable analysis.
+        </p>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          <i data-lucide="layout-dashboard"></i>
+        </div>
+
+        <h3>
+          Dashboard Development
+        </h3>
+
+        <p>
+          Create interactive dashboards that make important
+          business KPIs simple to understand.
+        </p>
+
+      </div>
+
+
+      <div class="service-card">
+
+        <div class="service-icon">
+          <i data-lucide="lightbulb"></i>
+        </div>
+
+        <h3>
+          Business Insights
+        </h3>
+
+        <p>
+          Translate analytical findings into practical
+          recommendations and business actions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- CONTACT -->
+<!-- ========================================================= -->
+
+<section
+  id="contact"
+  class="
+    py-20
+    sm:py-24
+    bg-slate-950
+    text-white
+    relative
+    overflow-hidden
+  "
+>
+
+  <div
+    class="
+      absolute
+      -top-40
+      -right-40
+      w-96
+      h-96
+      rounded-full
+      bg-sky-500/10
+      blur-3xl
+    "
+  ></div>
+
+  <div
+    class="
+      absolute
+      -bottom-40
+      -left-40
+      w-96
+      h-96
+      rounded-full
+      bg-indigo-500/10
+      blur-3xl
+    "
+  ></div>
+
+
+  <div
+    class="
+      max-w-7xl
+      mx-auto
+      px-4
+      sm:px-6
+      lg:px-8
+      relative
+    "
+  >
+
+    <div
+      class="
+        grid
+        lg:grid-cols-2
+        gap-12
+        lg:gap-20
+      "
+    >
+
+      <!-- CONTACT INFO -->
+
+      <div>
+
+        <p class="text-sky-400 font-bold tracking-widest text-sm">
+          GET IN TOUCH
+        </p>
+
+        <h2
+          class="
+            text-4xl
+            sm:text-5xl
+            lg:text-6xl
+            font-black
+            leading-tight
+            mt-4
+          "
+        >
+          Let's build something
+          <span class="text-sky-400">
+            meaningful.
+          </span>
+        </h2>
+
+        <p class="text-slate-400 text-lg leading-8 mt-6 max-w-xl">
+          Whether you have a data project, job opportunity, or simply
+          want to talk about analytics, I'd love to hear from you.
+        </p>
+
+
+        <div class="space-y-4 mt-9">
+
+          <a
+            href="mailto:kalpit@example.com"
+            class="contact-card"
+          >
+
+            <div class="contact-icon">
+              <i data-lucide="mail"></i>
+            </div>
+
+            <div>
+              <small>Email</small>
+              <span>kalpit@example.com</span>
+            </div>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="contact-card"
+          >
+
+            <div class="contact-icon">
+              <i data-lucide="linkedin"></i>
+            </div>
+
+            <div>
+              <small>LinkedIn</small>
+              <span>linkedin.com/in/kalpit-thanki</span>
+            </div>
+
+          </a>
+
+
+          <a
+            href="#"
+            class="contact-card"
+          >
+
+            <div class="contact-icon">
+              <i data-lucide="github"></i>
+            </div>
+
+            <div>
+              <small>GitHub</small>
+              <span>github.com/kalpit-thanki</span>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- FORM -->
+
+      <div
+        class="
+          rounded-[2rem]
+          bg-white/[.04]
+          border
+          border-white/10
+          p-5
+          sm:p-8
+        "
+      >
+
+        <form id="contactForm">
+
+          <div
+            class="
+              grid
+              sm:grid-cols-2
+              gap-5
+            "
+          >
+
+            <div>
+
+              <label class="form-label">
+                Your Name
+              </label>
+
+              <input
+                type="text"
+                required
+                placeholder="John Doe"
+                class="form-input"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label class="form-label">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                required
+                placeholder="john@example.com"
+                class="form-input"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="mt-5">
+
+            <label class="form-label">
+              Subject
+            </label>
+
+            <input
+              type="text"
+              required
+              placeholder="Project discussion"
+              class="form-input"
+            >
+
+          </div>
+
+
+          <div class="mt-5">
+
+            <label class="form-label">
+              Message
+            </label>
+
+            <textarea
+              required
+              rows="6"
+              placeholder="Tell me about your project..."
+              class="form-input resize-none"
+            ></textarea>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="
+              w-full
+              mt-6
+              py-4
+              rounded-xl
+              bg-sky-600
+              hover:bg-sky-500
+              text-white
+              font-bold
+              flex
+              items-center
+              justify-center
+              gap-2
+              transition
+            "
+          >
+
+            Send Message
+
+            <i data-lucide="send" class="w-5 h-5"></i>
+
+          </button>
+
+
+          <p
+            id="successMessage"
+            class="
+              hidden
+              text-center
+              text-emerald-400
+              text-sm
+              mt-4
+            "
+          >
+            Thanks! Your message has been received.
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer
+  class="
+    bg-slate-950
+    border-t
+    border-white/10
+    text-slate-400
+  "
+>
+
+  <div
+    class="
+      max-w-7xl
+      mx-auto
+      px-4
+      sm:px-6
+      lg:px-8
+      py-7
+    "
+  >
+
+    <div
+      class="
+        flex
+        flex-col
+        md:flex-row
+        items-center
+        justify-between
+        gap-4
+        text-sm
+      "
+    >
+
+      <p>
+        © <span id="year"></span> Kalpit Thanki.
+        All rights reserved.
+      </p>
+
+      <div class="flex items-center gap-5">
+
+        <a href="#home" class="hover:text-white transition">
+          Home
+        </a>
+
+        <a href="#projects" class="hover:text-white transition">
+          Projects
+        </a>
+
+        <a href="#contact" class="hover:text-white transition">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+  // ---------------------------------------------
+  // Icons
+  // ---------------------------------------------
+
+  lucide.createIcons();
+
+
+  // ---------------------------------------------
+  // Mobile Navigation
+  // ---------------------------------------------
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+
+    mobileMenu.classList.toggle('hidden');
+
+    const icon = menuBtn.querySelector('svg');
+
+    if (mobileMenu.classList.contains('hidden')) {
+
+      menuBtn.innerHTML =
+        '<i data-lucide="menu" class="w-5 h-5"></i>';
+
+    } else {
+
+      menuBtn.innerHTML =
+        '<i data-lucide="x" class="w-5 h-5"></i>';
+
+    }
+
+    lucide.createIcons();
+
+  });
+
+
+  // ---------------------------------------------
+  // Close mobile menu
+  // ---------------------------------------------
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+      mobileMenu.classList.add('hidden');
+
+      menuBtn.innerHTML =
+        '<i data-lucide="menu" class="w-5 h-5"></i>';
+
+      lucide.createIcons();
+
+    });
+
+  });
+
+
+  // ---------------------------------------------
+  // Dark Mode
+  // ---------------------------------------------
+
+  const themeBtn = document.getElementById('themeBtn');
+
+  themeBtn.addEventListener('click', () => {
+
+    document.documentElement.classList.toggle('dark');
+
+    if (
+      document.documentElement.classList.contains('dark')
+    ) {
+
+      localStorage.setItem('theme', 'dark');
+
+    } else {
+
+      localStorage.setItem('theme', 'light');
+
+    }
+
+  });
+
+
+  // Load saved theme
+
+  if (
+    localStorage.getItem('theme') === 'dark'
+  ) {
+
+    document.documentElement.classList.add('dark');
+
+  }
+
+
+  // ---------------------------------------------
+  // Current Year
+  // ---------------------------------------------
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+
+  // ---------------------------------------------
+  // Contact Form
+  // ---------------------------------------------
+
+  const form = document.getElementById('contactForm');
+  const successMessage =
+    document.getElementById('successMessage');
+
+  form.addEventListener('submit', function(event) {
+
+    event.preventDefault();
+
+    successMessage.classList.remove('hidden');
+
+    form.reset();
+
+    setTimeout(() => {
+
+      successMessage.classList.add('hidden');
+
+    }, 5000);
+
+  });
+
+
+  // ---------------------------------------------
+  // Active Navigation
+  // ---------------------------------------------
+
+  const sections =
+    document.querySelectorAll('section[id]');
+
+  const navLinks =
+    document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+
+    let current = '';
+
+    sections.forEach(section => {
+
+      const top =
+        section.offsetTop - 160;
+
+      if (window.scrollY >= top) {
+
+        current =
+          section.getAttribute('id');
+
+      }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+      link.classList.remove('active');
+      link.classList.remove('text-sky-600');
+
+      if (
+        link.getAttribute('href') ===
+        `#${current}`
+      ) {
+
+        link.classList.add('active');
+        link.classList.add('text-sky-600');
+
+      }
+
+    });
+
+  });
+
+
+  // ---------------------------------------------
+  // Dashboard bars animation
+  // ---------------------------------------------
+
+  window.addEventListener('load', () => {
+
+    const bars =
+      document.querySelectorAll('.chart-bar');
+
+    bars.forEach((bar, index) => {
+
+      const finalHeight =
+        bar.style.height ||
+        getComputedStyle(bar).height;
+
+      bar.style.height = '0';
+
+      setTimeout(() => {
+
+        bar.style.height =
+          finalHeight;
+
+      }, 150 + index * 70);
+
+    });
+
+  });
+
+</script>
+
+
+<!-- ========================================================= -->
+<!-- COMPONENT STYLES -->
+<!-- ========================================================= -->
+
+<style>
+
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .8rem 1rem;
+    border-radius: .85rem;
+    font-weight: 600;
+    transition: .2s;
+  }
+
+  .mobile-link svg {
+    width: 18px;
+    height: 18px;
+    color: #0ea5e9;
+  }
+
+  .mobile-link:hover {
+    background: #f0f9ff;
+    color: #0284c7;
+  }
+
+  .dark .mobile-link:hover {
+    background: #0f172a;
+    color: #38bdf8;
+  }
+
+
+  .section-kicker {
+    color: #0284c7;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+  }
+
+  .section-heading {
+    margin-top: .65rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -.04em;
+  }
+
+  .section-description {
+    margin-top: 1.2rem;
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .dark .section-description {
+    color: #94a3b8;
+  }
+
+
+  .stat-box {
+    padding: .9rem;
+    border-radius: 1rem;
+    background: rgba(255,255,255,.7);
+    border: 1px solid #e2e8f0;
+  }
+
+  .dark .stat-box {
+    background: rgba(15,23,42,.7);
+    border-color: #1e293b;
+  }
+
+  .stat-box strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #0284c7;
+  }
+
+  .stat-box span {
+    display: block;
+    margin-top: .2rem;
+    font-size: .7rem;
+    color: #64748b;
+  }
+
+
+  .dashboard-stat {
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #f8fafc;
+  }
+
+  .dark .dashboard-stat {
+    background: #0f172a;
+  }
+
+  .dashboard-stat span {
+    display: block;
+    font-size: .7rem;
+    color: #64748b;
+  }
+
+  .dashboard-stat strong {
+    display: block;
+    margin-top: .35rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+
+  .chart-bar {
+    flex: 1;
+    min-width: 4px;
+    border-radius: 7px 7px 3px 3px;
+    background: linear-gradient(
+      to top,
+      #0284c7,
+      #22d3ee
+    );
+    opacity: .9;
+  }
+
+
+  .about-point {
+    display: flex;
+    gap: .8rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    background: #f8fafc;
+  }
+
+  .dark .about-point {
+    border-color: #1e293b;
+    background: #0f172a;
+  }
+
+  .about-point > svg {
+    flex-shrink: 0;
+    color: #0ea5e9;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+  }
+
+  .about-point strong {
+    font-size: .9rem;
+  }
+
+  .about-point p {
+    margin-top: .2rem;
+    color: #64748b;
+    font-size: .75rem;
+    line-height: 1.5;
+  }
+
+  .dark .about-point p {
+    color: #94a3b8;
+  }
+
+
+  .dark-stat {
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 1rem;
+    background: rgba(255,255,255,.04);
+  }
+
+  .dark-stat span {
+    display: block;
+    font-size: .7rem;
+    color: #94a3b8;
+  }
+
+  .dark-stat strong {
+    display: block;
+    margin-top: .3rem;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+
+  .pill {
+    padding: .45rem .7rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.08);
+    font-size: .7rem;
+    color: #cbd5e1;
+  }
+
+
+  .tool-card {
+    text-align: center;
+    padding: 1.25rem .8rem;
+    border-radius: 1.25rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    transition: .3s;
+  }
+
+  .dark .tool-card {
+    background: #0f172a;
+    border-color: #1e293b;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-6px);
+    border-color: #38bdf8;
+    box-shadow: 0 20px 40px rgba(14,165,233,.08);
+  }
+
+  .tool-card h3 {
+    margin-top: .8rem;
+    font-size: .9rem;
+    font-weight: 800;
+  }
+
+  .tool-card p {
+    margin-top: .2rem;
+    color: #64748b;
+    font-size: .7rem;
+  }
+
+  .tool-icon {
+    width: 55px;
+    height: 55px;
+    margin: auto;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: .85rem;
+  }
+
+
+  .experience-date {
+    display: inline-block;
+    color: #0284c7;
+    font-size: .8rem;
+    font-weight: 800;
+  }
+
+  .experience-title {
+    margin-top: .4rem;
+    font-size: 1.35rem;
+    font-weight: 900;
+  }
+
+  .experience-company {
+    margin-top: .25rem;
+    color: #64748b;
+    font-size: .9rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    line-height: 1.75;
+  }
+
+  .dark .experience-card {
+    background: #0f172a;
+    border-color: #1e293b;
+    color: #94a3b8;
+  }
+
+  .experience-list {
+    margin-top: 1rem;
+    display: grid;
+    gap: .45rem;
+    font-size: .85rem;
+  }
+
+  .experience-list li::first-letter {
+    color: #0ea5e9;
+  }
+
+
+  .project-box {
+    overflow: hidden;
+    border-radius: 1.7rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+  }
+
+  .dark .project-box {
+    background: #0f172a;
+    border-color: #1e293b;
+  }
+
+  .project-visual {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .project-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.16);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: .75rem;
+    font-weight: 900;
+  }
+
+  .project-category {
+    font-size: .7rem;
+    color: #0284c7;
+    font-weight: 900;
+    letter-spacing: .1em;
+  }
+
+  .project-title {
+    margin-top: .5rem;
+    font-size: 1.25rem;
+    font-weight: 900;
+  }
+
+  .project-text {
+    margin-top: .7rem;
+    color: #64748b;
+    font-size: .85rem;
+    line-height: 1.7;
+  }
+
+  .dark .project-text {
+    color: #94a3b8;
+  }
+
+  .tech-pill {
+    padding: .4rem .65rem;
+    border-radius: .55rem;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: .7rem;
+    font-weight: 600;
+  }
+
+  .dark .tech-pill {
+    background: #1e293b;
+    color: #cbd5e1;
+  }
+
+
+  .service-card {
+    padding: 2rem;
+    border-radius: 1.7rem;
+    border: 1px solid #e2e8f0;
+    transition: .3s;
+  }
+
+  .dark .service-card {
+    border-color: #1e293b;
+  }
+
+  .service-card:hover {
+    transform: translateY(-7px);
+    border-color: #38bdf8;
+    box-shadow: 0 20px 50px rgba(14,165,233,.08);
+  }
+
+  .service-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 1rem;
+    background: #e0f2fe;
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dark .service-icon {
+    background: #082f49;
+  }
+
+  .service-card h3 {
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
+
+  .service-card p {
+    margin-top: .6rem;
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  .dark .service-card p {
+    color: #94a3b8;
+  }
+
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 1rem;
+    transition: .25s;
+  }
+
+  .contact-card:hover {
+    background: rgba(255,255,255,.04);
+    border-color: rgba(56,189,248,.3);
+  }
+
+  .contact-card small {
+    display: block;
+    color: #64748b;
+    font-size: .7rem;
+  }
+
+  .contact-card span {
+    display: block;
+    margin-top: .15rem;
+    color: #e2e8f0;
+    font-size: .85rem;
+    word-break: break-word;
+  }
+
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: .9rem;
+    background: rgba(14,165,233,.1);
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .form-label {
+    display: block;
+    margin-bottom: .5rem;
+    color: #cbd5e1;
+    font-size: .8rem;
+    font-weight: 700;
+  }
+
+  .form-input {
+    width: 100%;
+    border-radius: .85rem;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.04);
+    color: white;
+    padding: .85rem 1rem;
+    outline: none;
+    transition: .2s;
+  }
+
+  .form-input::placeholder {
+    color: #64748b;
+  }
+
+  .form-input:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14,165,233,.1);
+  }
+
+
+  @media (max-width: 767px) {
+
+    .experience-card {
+      padding: 1.2rem;
+    }
+
+    .project-visual {
+      height: 180px;
+    }
+
+  }
+
+</style>
+
+</body>
+</html>
