@@ -212,6 +212,30 @@ drop table tbl_feedback;
 3. truncate never rollback data 
 4. truncate only delete data not delete structures 
 
+
+**difference b/ primary key and unique key**
+
+**primary key**
+1. A pk is provides one times in table 
+2. A pk key should always auto_increment
+3. A pk never return a null values
+4. A pk stored a unique values 
+
+|   id(pk)     |  name     |  age  |   address |
+|--------------|-------------------|-----------|
+|   1          | brijesh   | 36    | rjt       |
+
+**unique key**
+1. A uk is provides more than one times in table 
+3. A uk return one times a null values
+4. A uk never return dublicate data 
+
+
+|   id(pk)     |  name     |  age  |   address |  mobile   |    email   |
+|--------------|-------------------|-----------|-----------|------------|
+|   1          | brijesh   | 36    | rjt       |9121212    | a@gmail.com|
+
+
 ```
 truncate table tablename
 or
@@ -219,12 +243,102 @@ truncate table tbl_feedback
 
 ``` 
 
+# difference b/w truncate | drop | delete 
+
+**truncate**
+
+1. truncate is empty all data from tables 
+2. after truncate we never rollback any data data from tables 
+3. truncate deleted  only rows or data 
+
+
+**drop**
+1. drop is used to drop database or table with structured and data 
+2. drop never rollback any data 
+
+**drop database**
+
+````
+drop database data_analytics_430;
+````
+
+**drop  table**
+
+````
+drop table tbl_feedback;
+````
+
+**delete**
+
+1. delete is used to delete all data from table
+2. delete is used to delete particular data from tables 
+3. delete is used to a range of data from tables 
+4. delete is used to delete alternate   data from table
+
+**delete data**
+
+1. delete from tbl_country;
+2. delete from tbl_country where cid=2;
+3. delete from tbl_country where name='pakistan';
+4. delete from tbl_country where cid between 6 and 50;
+5. delete from tbl_country where cid in (2,5,7);
+
+**note: after delete we rollback data using transanctional query**
+
 
 # DML (data manipulation language)
 
-  1. DML is used to insert | delete | update data 
+1. DML is used to insert | delete | update data 
 
-  ```
-  examples : insert | delete | update 
+```
+examples : insert | delete | update 
 
-  ```
+```
+
+2. How to **insert data** ...
+
+**syntax**
+
+```
+insert into tbl_customers(name,photo,password,firstname,lastname,gender,mobile,address) values('brijesh','brijesh.jpg','brij123','brij','pandey','male',912236151546,'rajkot')
+
+or
+
+insert into tbl_customers(name,photo,password,firstname,lastname,gender,mobile,address) values('dhruv','dhruv.jpg','d123','shruv','patel','male',912236151546,'rajkot'),('bhavika','bhavika.jpg','bh123','bhavika','sharma','female',9122361,'rajkot'),('kalpit','kalpit.jpg','kalpit','kalpit','patel','male',912236,'rajkot')
+
+or
+
+insert into tbl_customers values(null,'om','om.jpg','d123','shruv','patel','male',912236151546,'rajkot'),(null,'jainish','jainish.jpg','bh123','bhavika','sharma','female',9122361,'rajkot'),(null,'kumar','kumar.jpg','kalpit','kalpit','patel','male',912236,'rajkot')
+
+```
+
+3. How to **update data or rows**... 
+
+**syntax**
+```
+update tablename set columnname='values' where id=1;
+or 
+update  tbl_customers set name='naimish',photo='naimish.png',password='naimish123',firstname='naimish',lastname='vaja',mobile=6356421656,address='150 feet ring road ahemdabad' where id=7; 
+```
+
+
+4. how to **delete data or **rows**..
+
+- delete from tbl_country;
+- delete from tbl_country where cid=2;
+- delete from tbl_country where name='pakistan';
+- delete from tbl_country where cid between 6 and 50;
+- delete from tbl_country where cid in (2,5,7);
+
+**note**
+- after delete we can rollback data via rollback transactional query 
+
+
+## DQL  : stands for data query language
+
+**query in DQL**
+
+```
+select 
+
+```

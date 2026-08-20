@@ -26,8 +26,13 @@
 ## upload via git commands 
 
 1. git init
-2. git add README.md
-3. git commit -m "first commit"
-4. git branch -M main
+2. git add .
+3. git commit -m "first commit or write any message here"
+4. git branch -M master
 5. git remote add origin https://github.com/Brijesh1990/data_analytics_4pm_TTS.git
-6. git push -u origin main
+6. git push -u origin master
+
+
+## how to download git backup 
+
+1. git clone  https://github.com/Brijesh1990/data_analytics_4pm_TTS.git
