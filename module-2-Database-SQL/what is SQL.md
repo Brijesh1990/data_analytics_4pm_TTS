@@ -341,4 +341,165 @@ update  tbl_customers set name='naimish',photo='naimish.png',password='naimish12
 ```
 select 
 
+1. select all data from tables
+
+select * from tbl_customers
+
+2. select particular one data from tables 
+
+select * from tbl_customers where id=3;
+
+3. select particular one data from tables 
+
+select * from tbl_customers where name='kalpit';
+
+
+4. select particular columns of data
+
+select name,photo,mobile,address from tbl_customers;
+
+
+5. select and create alias(change nick name of column) of any column name
+
+select cid,cname as countryname from tbl_country
+
+6. select alternative of data from tables 
+
+select * from tbl_customers where id in(4,6,7);
+
+7. select range of data from tables 
+
+select * from tbl_customers where id between 1 and 6;
+
+8. select data using limit 
+
+select * from tbl_customers where id limit 0,1;
+or
+select * from tbl_customers where id limit 3,2;
+or
+select * from tbl_customers where id limit 5,3;
+
+9. select is used in searching data using like operator and its wildcard
+
+a) select customers name who's name start with 'a' character
+
+select * from tbl_customers where name like  'a%';
+or
+select * from tbl_customers where name like  'b%';
+
+
+
+b) select customers name who's name end with 'h' character
+
+select * from tbl_customers where name like  '%h';
+or
+select * from tbl_customers where name like  '%t';
+
+
+c) select customers name who's name found a anywhere  'a' character
+
+select * from tbl_customers where name like  '%a%';
+or
+select * from tbl_customers where name like  '%sh%';
+
 ```
+# difference b/w order by and group by 
+
+## order by : 
+
+- order by is used to filter data from tables in ASC or DESC order 
+
+``` 
+select * from tbl_employee order by name asc;
+or
+select * from tbl_employee order by name DESC;
+or
+select * from tbl_employee order by name;
+
+```
+
+- w.a.q to filter from tables to find second highest salary
+
+```
+select * from tbl_employee order by salary desc limit 1,1;
+
+```    
+- w.a.q to filter from tables to find highest  salary
+
+```
+
+select * from tbl_employee order by salary desc limit 0,1;
+
+```
+
+# w.a.q to find second highest salary using subquery 
+
+# what is subquery ? 
+
+1. query within another query i.e called subquery 
+
+```
+select max(salary) as second_highest_salary from tbl_employee where salary < (select max(salary) from tbl_employee); 
+
+```
+
+# group by :
+
+- group by filter data on group of columns in tables 
+
+- w.a.q to sum of salary of departments
+
+```
+select sum(salary) as sumof_salary,department  from tbl_employee group by department;
+```
+
+# distinct :  
+
+- distinct a keyword used in sql to find a different and unique values from tables there we used distinct 
+
+```
+select DISTINCT(salary) from tbl_employee 
+``` 
+
+
+# sql function ? 
+
+- SQL provides some inbuilt function that can be used to completed any task  
+- There are two types of sql inbuilt function 
+
+1. aggrigate function
+
+- sum()
+- avg()
+- count()
+- max()
+- min()
+
+2. scalar function 
+
+- first()
+- last()
+- ucase()
+- lcase()
+- now()
+- timestamp()
+
+**examples of all sql function**
+
+
+1.  select sum(salary) as sumof_salary from tbl_employee
+2.  select avg(salary) as averageof_salary from tbl_employee
+3.  select COUNT(empid) as total_numbers_employee from tbl_employee
+4.  select max(salary) as max_salary from tbl_employee
+6.  select min(salary) as min_salary from tbl_employee
+7.  select first(empid) from tbl_employee
+8.  select last(empid) from tbl_employee
+9.  select ucase(name) from tbl_employee
+10. select lcase(name) from tbl_employee
+11. select now(added_date_time) from tbl_employee
+12. select timestamp(added_date_time) from tbl_employee
+
+
+# TCL : transactional control language
+
+   query : commit | rollback 
