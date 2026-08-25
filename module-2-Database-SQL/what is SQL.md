@@ -503,3 +503,126 @@ select DISTINCT(salary) from tbl_employee
 # TCL : transactional control language
 
    query : commit | rollback 
+
+
+# TCL have some query 
+
+  1. commit : commit is used to save data after delete 
+
+     **query**
+
+     ```
+     START TRANSACTION;
+     delete from tbl_employee where empid=4;
+     commit; 
+
+     ```
+
+
+     2. rollback : rollback  is used to return data   after delete from tables  
+
+     **query**
+
+     ```
+     START TRANSACTION;
+     delete from tbl_employee where empid=8;
+     select * from tbl_employee where empid=8;
+     rollback;
+     select * from tbl_employee where empid=8;
+     
+     ```
+
+
+# SQL windows function ....
+
+ 1. SQL windows function is used to applied calculations and add unique rows to current rows in a table.
+
+ 2. SQL windows function are used to add or set a rows related to the current row without grouping the result into a single row.
+
+# types of windows function 
+
+
+1. ROW_NUmber()
+2. Rank()
+3. Dense_RANK()
+4. NTILE()
+5. LAG()
+6. LEAD()
+7. FIRST_VALUE()
+8. LAST_VALUE()
+9. SUM() OVER()
+10. AVG() OVER()
+11. MIN() OVER()
+12. MAX() OVER()
+13. COUNT() OVER()
+
+**examples of windows function**
+
+1. select name ,salary,ROW_NUMBER() over(order by salary desc) from tbl_employee;
+2. select name ,salary,Rank() over(order by salary desc) from tbl_employee;
+3. select name ,salary,Dense_Rank() over(order by salary desc) from tbl_employee;
+4. select name ,salary,NTILE(3) over(order by salary desc) from tbl_employee;
+5. select name ,salary,LAG(salary,1) over(order by salary desc) from tbl_employee;
+6. select name ,salary,LEAD(salary,1) over(order by salary desc) from tbl_employee;
+7. select name ,salary,first_value(salary) over(order by salary desc) from tbl_employee;
+8. select name ,salary,sum(salary) over(order by salary desc) from tbl_employee;
+9. select name ,salary,avg(salary) over(order by salary desc) from tbl_employee;
+10. select name ,salary,max(salary) over(order by salary desc) from tbl_employee;
+11. select name ,salary,min(salary) over(order by salary desc) from tbl_employee;
+12. select name ,salary,count(salary) over(order by salary desc) from tbl_employee;
+13. select name ,salary,Last_values(salary) over(order by salary desc) from tbl_employee;
+
+
+
+# what is SQL index or indexer or SQL query optimizations ? 
+
+1. SQL index or indexer create for optimized a speed of SQL tables 
+2. SQL index used to optimized speed of tables 
+3. index or indexer is fast lookup data from table
+4. indexer is used to one column of table of multiples columns of tables 
+
+   **two types of indexer**
+
+   1. single indexer 
+
+      ```
+      create index indexname on tablename  (columnname);
+      or 
+      create index index_emplid on tbl_employee  (empid);  
+
+      ```
+   2. composite indexer 
+  
+     ```
+     create index index_emplid on tbl_employee  (empid,name,salary);
+
+     ``` 
+
+
+# What is SQL view ? 
+
+  1. SQL view is used to create an dublicate table of virtual tables of main table
+  2. SQL view create a clone of main tables 
+  3. SQL view create to clone of main tables to hide some data from some users there we create view 
+
+# how to create view  ?
+ 
+ **query**
+ 
+  ```
+  create view view_employee_data as select * from tbl_employee
+  
+  ```
+
+# note : when we create any query inside of virtual tables or view its performed in our main tables 
+
+  ```
+  insert in view 
+  delete in view 
+  update in view 
+  change in view   
+  
+  ```
+
+
+
