@@ -502,42 +502,42 @@ select DISTINCT(salary) from tbl_employee
 
 # TCL : transactional control language
 
-   query : commit | rollback 
+query : commit | rollback 
 
 
 # TCL have some query 
 
-  1. commit : commit is used to save data after delete 
+1. commit : commit is used to save data after delete 
 
-     **query**
+**query**
 
-     ```
-     START TRANSACTION;
-     delete from tbl_employee where empid=4;
-     commit; 
+```
+START TRANSACTION;
+delete from tbl_employee where empid=4;
+commit; 
 
-     ```
+```
 
 
-     2. rollback : rollback  is used to return data   after delete from tables  
+2. rollback : rollback  is used to return data   after delete from tables  
 
-     **query**
+**query**
 
-     ```
-     START TRANSACTION;
-     delete from tbl_employee where empid=8;
-     select * from tbl_employee where empid=8;
-     rollback;
-     select * from tbl_employee where empid=8;
-     
-     ```
+```
+START TRANSACTION;
+delete from tbl_employee where empid=8;
+select * from tbl_employee where empid=8;
+rollback;
+select * from tbl_employee where empid=8;
+
+```
 
 
 # SQL windows function ....
 
- 1. SQL windows function is used to applied calculations and add unique rows to current rows in a table.
+1. SQL windows function is used to applied calculations and add unique rows to current rows in a table.
 
- 2. SQL windows function are used to add or set a rows related to the current row without grouping the result into a single row.
+2. SQL windows function are used to add or set a rows related to the current row without grouping the result into a single row.
 
 # types of windows function 
 
@@ -581,48 +581,514 @@ select DISTINCT(salary) from tbl_employee
 3. index or indexer is fast lookup data from table
 4. indexer is used to one column of table of multiples columns of tables 
 
-   **two types of indexer**
+**two types of indexer**
 
-   1. single indexer 
+1. single indexer 
 
-      ```
-      create index indexname on tablename  (columnname);
-      or 
-      create index index_emplid on tbl_employee  (empid);  
+```
+create index indexname on tablename  (columnname);
+or 
+create index index_emplid on tbl_employee  (empid);  
 
-      ```
-   2. composite indexer 
-  
-     ```
-     create index index_emplid on tbl_employee  (empid,name,salary);
+```
+2. composite indexer 
 
-     ``` 
+```
+create index index_emplid on tbl_employee  (empid,name,salary);
+
+``` 
 
 
 # What is SQL view ? 
 
-  1. SQL view is used to create an dublicate table of virtual tables of main table
-  2. SQL view create a clone of main tables 
-  3. SQL view create to clone of main tables to hide some data from some users there we create view 
+1. SQL view is used to create an dublicate table of virtual tables of main table
+2. SQL view create a clone of main tables 
+3. SQL view create to clone of main tables to hide some data from some users there we create view 
 
 # how to create view  ?
- 
- **query**
- 
-  ```
-  create view view_employee_data as select * from tbl_employee
-  
-  ```
+
+**query**
+
+```
+create view view_employee_data as select * from tbl_employee
+
+```
 
 # note : when we create any query inside of virtual tables or view its performed in our main tables 
 
-  ```
-  insert in view 
-  delete in view 
-  update in view 
-  change in view   
+```
+insert in view 
+delete in view 
+update in view 
+change in view   
+
+```
+
+**case based questions and solutions of faculty based database**
+
+1. create a database named "university"
+
+2. create a table named "faculty" with the following columns: faculty_id (primary key), faculty_name, department, and country_id (foreign key referencing the country table) and 
+provides email as unique key in faculty tables.
+
+3. insert at least 5 records into the faculty table.
+
+4. create a table named "courses" with the following columns: course_id (primary key), course_name, and faculty_id (foreign key referencing the faculty table).
+
+5. insert at least 3 records into the courses table.  
+
+6. create a table named "students" with the following columns: student_id (primary key), student_name, age, and country_id (foreign key referencing the country table).
+
+7. insert at least 5 records into the students table.
+
+8. create a table named "enrollments" with the following columns: enrollment_id (primary key), student_id (foreign key referencing the students table), course_id (foreign key referencing the courses table), and enrollment_date.
+
+
+9. insert at least 5 records into the enrollments table.
+
+10. write a query to select all enrollments along with student names and course names.
+
+11. write a query to find the total number of students enrolled in each course.
+
+12. write a query to find the faculty member teaching the most courses.
+
+13. write a query to update the department of a faculty member with a specific faculty_id.
+
+14. write a query to delete a student with a specific student_id.
+
+**Note: after creating database and tables you will insert some data in that tables then you will apply all the queries on that data to understand better**
+
+**solutions of students tables** 
+
+```
+
+CREATE TABLE tbl_student
+(
+student_id INT AUTO_INCREMENT PRIMARY KEY,
+studentname VARCHAR(255),
+studentage INT,
+phone BIGINT,
+address TEXT,
+grade VARCHAR(255),
+
+faculty_id INT,
+department_id INT,
+country_id INT,
+
+CONSTRAINT faculty_id
+FOREIGN KEY (faculty_id)
+REFERENCES tbl_faculty(faculty_id)
+ON DELETE CASCADE,
+
+CONSTRAINT department_id
+FOREIGN KEY (department_id)
+REFERENCES tbl_department(department_id)
+ON DELETE CASCADE,
+
+CONSTRAINT country_id
+FOREIGN KEY (country_id)
+REFERENCES tbl_country(country_id)
+ON DELETE CASCADE
+);
+
+
+create table tbl_country
+(
+
+country_id int AUTO_INCREMENT primary key,
+country_name varchar(255)
+
+)
+
+create table tbl_department
+(
+
+department_id int AUTO_INCREMENT primary key,
+dep_name varchar(255)
+
+)
+create table tbl_faculty
+(
+
+faculty_id int AUTO_INCREMENT primary key,
+faculty_name varchar(255),
+department varchar(255),
+country_id INT,
+CONSTRAINT tbl_country
+FOREIGN KEY (country_id)
+REFERENCES tbl_country(country_id)
+ON DELETE CASCADE
+
+
+)
+
+
+create table tbl_courses
+(
+
+course_id int AUTO_INCREMENT primary key,
+course_name varchar(255),
+faculty_id INT,
+CONSTRAINT tbl_faculty
+FOREIGN KEY (faculty_id)
+REFERENCES tbl_faculty(faculty_id)
+ON DELETE CASCADE
+
+
+)
+
+
+
+create table tbl_enrollment
+(
+
+enrollment_id int AUTO_INCREMENT primary key,
+course_id INT,
+CONSTRAINT tbl_course
+FOREIGN KEY (course_id)
+REFERENCES tbl_course(course_id)
+ON DELETE CASCADE,
+
+student_id INT,
+CONSTRAINT tbl_student
+FOREIGN KEY (student_id)
+REFERENCES tbl_student(student_id)
+ON DELETE CASCADE,
+
+enrollment_date date
+
+
+)
+
+
+**foreign key** : 
+
+1- A fk is used to provides relationship b/w one tables to another tables 
+2- A fk is used to provides more than one times 
+3. A fk is create a for relationship with common field
+
+
+
+1) select student with there countryname
+
+select tbl_student .*, countryname from tbl_student join tbl_country on tbl_student.country_id=tbl_country.country_id;
+
+or
+
+select student_id,studentname,address,grade, countryname from tbl_student join tbl_country on tbl_student.country_id=tbl_country.country_id
+
+2) select avg(studentage) as average_student_age from tbl_student
+
+3) select avg(studentage) as average_student_age, studentage from tbl_student group by grade
+
+4) select COUNT(student_id) as total_student from tbl_student group by country_id;
+
+5) select COUNT(student_id) as total_student,country_name from tbl_student  join tbl_country on tbl_student.country_id=tbl_country.country_id group by country_name;
+
+6) select studentname from tbl_student  where grade='A'
+
+7) update tbl_student set grade='A' where student_id=4;
+
+8) delete from tbl_student where student_id=4;
+
+
+```
+
+
+## Home work
+
+**students based database**
+
+1. create a database named "school"
+
+2. create a table named "students" with the following columns: id (primary key), name, age, grade, and country_id (foreign key referencing the country table).
+
+3. insert at least 5 records into the students table.
+
+4. create a table named "country" with the following columns: country_id (primary key) and country_name.
+
+5. insert at least 3 records into the country table.
+
+6. write a query to select all students along with their country names.
+
+7. write a query to find the average age of students in each grade.
+
+8. write a query to find the total number of students in each country.
+
+9. write a query to find the student with the highest grade.
+
+10. write a query to update the grade of a student with a specific id.
+
+11. write a query to delete a student with a specific id.
+
+
+
+**add to cart based database**
+
+1. create a database named "ecommerce_app"
+
+2. create a table named "products" with the following columns: product_id (primary key), product_name, price, and stock.
+
+3. insert at least 5 records into the products table.
+
+4. create a table named "customers" with the following columns: customer_id (primary key), customer_name, email, and country_id (foreign key referencing the country table).
+
+5. insert at least 3 records into the customers table.   
+
+6. create a table named "orders" with the following columns: order_id (primary key), customer_id (foreign key referencing the customers table), product_id (foreign key referencing the products table), quantity, and order_date.
+
+7. insert at least 5 records into the orders table.   
+
+8. write a query to select all orders along with customer names and product names.
+
+9. write a query to find the total revenue generated from all orders.
+
+10. write a query to find the most popular product based on the quantity ordered.
+
+11. write a query to update the stock of a product after an order is placed.
+
+12. write a query to delete an order with a specific order_id.
+
+
+# normailization in SQL ?
+
+1. normalization is used to normalised any tables and provides relationship b/w them.
+
+2. normalization is some types  ....
+
+## types of normalization ?
+
+1. 1-NF 
+2. 2-NF
+3. 3-NF
+4. 4-NF
+
+**1-NF***
+
+```
+1-NF form is just information about any tables with primary key 
+
+```
+
+
+**2-NF***
+
+```
+2-NF form is just information about any tables with primary key and provides UK for not return a dublicate data  
+
+```
+
+
+**2-NF***
+
+```
+3-NF form is just information about any tables with primary key and provides UK for not return a dublicate data and also provides a fk for relationship b/w one tables to another tables i.e 3-NF  
+
+```
+
+# SQL key constraints ? 
+
+1. SQL key constraints provides limit on tables using pk | uk | fk 
+2. SQL keu constaints also provides relationship b/w tables with common field with fk 
+
+## types of key contarints 
+
+1. pk
+```
+A pk is never return null values
+A pk is stored unique data 
+A pk only defines one times in a tables 
+A pk is always auto_increments
+```
+
+2. uk
+```
+A uk is return once times  null values
+A uk is stored unique data 
+A uk defines more than one times in a tables 
+A uk is never return dublicate data
+
+```  
+3. fk
+```
+A fk is never return null values
+A fk is stored dublicate  data 
+A fk  defines more than one times in a tables 
+A fk provides relationship b/w one tables to another tables with common field 
+```
+
+
+## scenario using pk | uk | fk 
+
+1. create a table of tbl_department
+2. create a table of tbl_college
+3. create a table tbl_students
+
+```
+create table tbl_department
+(
+depid int AUTO_INCREMENT primary KEY,
+depname varchar(255)    
+)
+
+or
+
+create table tbl_college
+(
+collegeid int AUTO_INCREMENT primary KEY,
+collegename varchar(255)    
+)
+
+or
+
+
+create table tbl_students
+(
+studentid int AUTO_INCREMENT primary KEY,
+collegeid INT,
+CONSTRAINT tbl_college
+FOREIGN KEY (collegeid)
+REFERENCES tbl_college(collegeid)
+ON DELETE CASCADE,
+
+depid INT,
+CONSTRAINT tbl_department
+FOREIGN KEY (depid)
+REFERENCES tbl_department(depid)
+ON DELETE CASCADE,
+    
+name varchar(255),
+age int, 
+adress text,
+mobile bigint       
+)
+
+```
+# sql join ? 
+
+  1. SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+
+## types of join ? 
+
+ 1. join 
+ 2. inner join 
+ 3. outer join 
+    - left join 
+    - right join 
+    - full join (not support in mysql) 
+ 4. cross join  
   
+**join**
+
+ SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+
+ **syntax**
+
+ ```
+ select 1sttablename.*, columname from 1sttablename join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+ or
+ select tbl_students.*, depname from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid;
+ or
+ 
+ select tbl_students.*, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+ or
+
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+ ```
+
+**inner join :**
+
+
+ SQL inner join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+
+ **syntax**
+
+ ```
+ select 1sttablename.*, columname from 1sttablename inner join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+ or
+ select tbl_students.*, depname from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid;
+ or
+ 
+ select tbl_students.*, depname, collegename from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid inner join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+ or
+
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid inner join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+ ```
+
+
+## outer join
+
+**left join**
+
+
+ SQL left  join is used to match data from 1st table of left rows to second table of left rows  if data are matched join all data otherwise return null values
+
+ **syntax**
+
+ ```
+ select 1sttablename.*, columname from 1sttablename left join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+ or
+ select tbl_students.*, depname from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid;
+ or
+ 
+ select tbl_students.*, depname, collegename from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid left join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+ or
+
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid left join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+ ```
+ 
+**right join**
+
+ SQL right  join is used to match data from 2nd table of right rows to 1st  table of right rows  if data are matched join all data otherwise return null values
+
+ **syntax**
+
+ ```
+ select 1sttablename.*, columname from 1sttablename right join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+ or
+ select tbl_students.*, depname from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid;
+ or
+ 
+ select tbl_students.*, depname, collegename from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid right join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+ or
+
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid right join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+ 
+ ```
+ 
+**cross join**
+
+cross join either data matched or not its return a multiplication of total rows from second tables of total rows and join tables and also return a multiple dublicates values.
+
+```
+select * from tbl_students cross join tbl_college;
+
+```
+  
+
+**query based task**
+
+
+1. get a collegename and departmentname inside of students table
+
+  **solution**
+
+ ```
+ select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+ ```
+
+2. get students with depname , collegename only of 2 students
+
   ```
+  select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid in(2,3);
 
+  or
 
+   select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid between 5 and 100;
+
+  ```
 
