@@ -760,14 +760,17 @@ enrollment_date date
 
 )
 
+```
+
 
 **foreign key** : 
 
-1- A fk is used to provides relationship b/w one tables to another tables 
-2- A fk is used to provides more than one times 
+1. A fk is used to provides relationship b/w one tables to another tables 
+2. A fk is used to provides more than one times 
 3. A fk is create a for relationship with common field
 
 
+```
 
 1) select student with there countryname
 
@@ -864,21 +867,16 @@ select student_id,studentname,address,grade, countryname from tbl_student join t
 4. 4-NF
 
 **1-NF***
-
 ```
 1-NF form is just information about any tables with primary key 
 
 ```
-
-
 **2-NF***
 
 ```
 2-NF form is just information about any tables with primary key and provides UK for not return a dublicate data  
 
 ```
-
-
 **2-NF***
 
 ```
@@ -941,7 +939,6 @@ collegename varchar(255)
 
 or
 
-
 create table tbl_students
 (
 studentid int AUTO_INCREMENT primary KEY,
@@ -956,7 +953,7 @@ CONSTRAINT tbl_department
 FOREIGN KEY (depid)
 REFERENCES tbl_department(depid)
 ON DELETE CASCADE,
-    
+
 name varchar(255),
 age int, 
 adress text,
@@ -966,56 +963,57 @@ mobile bigint
 ```
 # sql join ? 
 
-  1. SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+1. SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
 
 ## types of join ? 
 
- 1. join 
- 2. inner join 
- 3. outer join 
-    - left join 
-    - right join 
-    - full join (not support in mysql) 
- 4. cross join  
-  
+1. join 
+2. inner join 
+3. outer join 
+- left join 
+- right join 
+- full join (not support in mysql) 
+4. cross join  
+5. self join
+
 **join**
 
- SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+SQL join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
 
- **syntax**
+**syntax**
 
- ```
- select 1sttablename.*, columname from 1sttablename join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
- or
- select tbl_students.*, depname from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid;
- or
- 
- select tbl_students.*, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+```
+select 1sttablename.*, columname from 1sttablename join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+or
+select tbl_students.*, depname from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid;
+or
 
- or
+select tbl_students.*, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+or
 
 select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
- ```
+```
 
 **inner join :**
 
 
- SQL inner join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
+SQL inner join is used to match data from 1st table to second table if data are matched join all data otherwise return null values
 
- **syntax**
+**syntax**
 
- ```
- select 1sttablename.*, columname from 1sttablename inner join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
- or
- select tbl_students.*, depname from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid;
- or
- 
- select tbl_students.*, depname, collegename from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid inner join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+```
+select 1sttablename.*, columname from 1sttablename inner join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+or
+select tbl_students.*, depname from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid;
+or
 
- or
+select tbl_students.*, depname, collegename from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid inner join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+or
 
 select studentid,name,age,adress,mobile, depname, collegename from tbl_students inner join tbl_department on tbl_students.depid=tbl_department.depid inner join tbl_college on tbl_students.collegeid=tbl_college.collegeid
- ```
+```
 
 
 ## outer join
@@ -1023,43 +1021,43 @@ select studentid,name,age,adress,mobile, depname, collegename from tbl_students 
 **left join**
 
 
- SQL left  join is used to match data from 1st table of left rows to second table of left rows  if data are matched join all data otherwise return null values
+SQL left  join is used to match data from 1st table of left rows to second table of left rows  if data are matched join all data otherwise return null values
 
- **syntax**
+**syntax**
 
- ```
- select 1sttablename.*, columname from 1sttablename left join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
- or
- select tbl_students.*, depname from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid;
- or
- 
- select tbl_students.*, depname, collegename from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid left join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+```
+select 1sttablename.*, columname from 1sttablename left join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+or
+select tbl_students.*, depname from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid;
+or
 
- or
+select tbl_students.*, depname, collegename from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid left join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+or
 
 select studentid,name,age,adress,mobile, depname, collegename from tbl_students left join tbl_department on tbl_students.depid=tbl_department.depid left join tbl_college on tbl_students.collegeid=tbl_college.collegeid
- ```
- 
+```
+
 **right join**
 
- SQL right  join is used to match data from 2nd table of right rows to 1st  table of right rows  if data are matched join all data otherwise return null values
+SQL right  join is used to match data from 2nd table of right rows to 1st  table of right rows  if data are matched join all data otherwise return null values
 
- **syntax**
+**syntax**
 
- ```
- select 1sttablename.*, columname from 1sttablename right join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
- or
- select tbl_students.*, depname from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid;
- or
- 
- select tbl_students.*, depname, collegename from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid right join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+```
+select 1sttablename.*, columname from 1sttablename right join 2ndtablename on 1sttablename.commonfield=2nstablename.commonfield;
+or
+select tbl_students.*, depname from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid;
+or
 
- or
+select tbl_students.*, depname, collegename from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid right join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+
+or
 
 select studentid,name,age,adress,mobile, depname, collegename from tbl_students right join tbl_department on tbl_students.depid=tbl_department.depid right join tbl_college on tbl_students.collegeid=tbl_college.collegeid
- 
- ```
- 
+
+```
+
 **cross join**
 
 cross join either data matched or not its return a multiplication of total rows from second tables of total rows and join tables and also return a multiple dublicates values.
@@ -1068,27 +1066,38 @@ cross join either data matched or not its return a multiplication of total rows 
 select * from tbl_students cross join tbl_college;
 
 ```
-  
+
 
 **query based task**
 
 
 1. get a collegename and departmentname inside of students table
 
-  **solution**
+**solution**
 
- ```
- select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
- ```
+```
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid
+```
 
 2. get students with depname , collegename only of 2 students
 
-  ```
-  select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid in(2,3);
+```
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid in(2,3);
 
-  or
+or
 
-   select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid between 5 and 100;
+select studentid,name,age,adress,mobile, depname, collegename from tbl_students join tbl_department on tbl_students.depid=tbl_department.depid join tbl_college on tbl_students.collegeid=tbl_college.collegeid where studentid between 5 and 100;
 
-  ```
+```
+
+## self join ?
+
+1. self join isused to join a table to itself and return data from same table with matched columns and field of tables there we used self join.
+
+# create a scenario for self join 
+
+```
+select e.empid, e.name as employee_name , m.name as manager_name from tbl_employee e inner join tbl_employee m on e.manager_id=m.empid;
+
+```
 
