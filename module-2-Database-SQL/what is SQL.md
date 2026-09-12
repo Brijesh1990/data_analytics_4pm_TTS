@@ -1268,9 +1268,7 @@ FROM (
 WHERE n <= 10000;
 
 ```
-
 **or add random 10k data in tables**
-
 ```
 INSERT INTO tbl_country (cname)
 SELECT CONCAT(
@@ -1298,3 +1296,51 @@ FROM (
 
 
 ```
+
+# SQL with clause or CTE (common table expression)
+
+1. THe SQL **with** clause (common table express) or CTE defines  a temporary result set that can be used within query
+2. it is simplify complex SQL statements making them easier to read, manage and reuse there we create CTE.
+
+```
+with AvgSalaryCTE (averageValue) as (select AVG(salary) from tbl_employee)
+select empid,name,mobile,salary from tbl_employee where salary > (select averageValue from AVGSalaryCTE);
+
+```
+# screenshot of convert data in CSV(coma seperated values) of your tables 
+
+**screenshot of CSV**
+
+1. ![alt text](image-8.png)
+
+**screenshot of EXcel**
+
+1. ![alt text](image-8.png)
+
+**schreenshot of chart**
+
+1. ![alt text](image-9.png)
+
+# question
+
+```
+Enable dynamic data refresh in your Excel sheet so that when new records are added to the 'Restaurants' table in SQL Server, you can update the Excel data with a single click.
+```
+
+**solutions**
+
+1. In Excel, go to Data → Get Data → From Database → From SQL Server Database.
+2. Connect to your SQL Server and select the Restaurants table.
+3. Load the data into Excel.
+4. Go to Data → Queries & Connections.
+5. Right-click the query → Properties.
+6. Enable Refresh data when opening the file if desired.
+7. To update manually with one click, use Data → Refresh All.
+
+
+Now, whenever new records are added to the SQL Server Restaurants table, clicking Refresh All pulls the latest records into Excel.
+
+If you want, I can also show you how to add a “Refresh Data” button directly inside the Excel sheet.
+
+
+![alt text](image-10.png)
