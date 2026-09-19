@@ -7,11 +7,12 @@
 # int
 # float 
 # string
-# array
+# array or list
 # list
 # dictionary 
 # set
 # tuple
+# pass 
 
 
 # int
