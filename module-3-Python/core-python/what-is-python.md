@@ -34,6 +34,7 @@ python is a high-level interpreted , object oriented programming language used t
    **django**
 2. python used in software development
    **tkinter**
+   
 3. Artificial intelligence 
 4. Data science 
 5. data analytics 
@@ -274,6 +275,150 @@ print(name)
 print(type(name))
 
 ```
+
+# what is REPL in python ? 
+
+1. REPL stand for read | evaluate | print | loop 
+2. REPL create python programmes without create script 
+3. REPL stands to evaluate programmes without write an script or create module in python
+4. REPL not provides a file backup because run on command line interface
+
+**examples of REPL**
+```
+E:\data_analytics4pm-TTS\module-3-Python\core-python>python
+Python 3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> a=10
+>>> b=20
+>>> c=a+b
+>>> print("additions of numbers :",c)
+additions of numbers : 30
+>>> name=input("Enter your name :")
+Enter your name :brijesh
+>>> print("my name is :",name)
+my name is : brijesh
+>>> a=int(input("Enter a values :"))
+Enter a values :20
+>>> b=int(input("Enter b values :"))
+Enter b values :50
+>>> c=a+b
+>>> print("additions of numbers :",c)
+additions of numbers : 70
+>>> age=18
+>>> if age>=18:
+...     print("i am eligible for vote")
+... else:
+...     print("i am not eleigible for vote")
+...
+i am eligible for vote
+>>> for i in range(1,100):
+...     print(i)
+...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+>>>
+
+```
+
+
+
 
 # what is data-types in python ? 
 
