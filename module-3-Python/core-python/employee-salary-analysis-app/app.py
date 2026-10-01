@@ -1,76 +1,60 @@
-import pandas as pd
+# used all libraries 
+import pandas as pd 
+# import matplotlib lib for chart
 import matplotlib.pyplot as plt
+# create a data 
+data={
+	"name":["bhavika","sneha","priyanka","komal","shreya","kalpit","brijesh","dhruv"],
+   "age":[20,21,22,23,24,25,26,27],
+   "salary":[10000,20000,30000,40000,50000,60000,70000,80000],
+   "department":["IT","HR","IT","HR","IT","HR","IT","HR"]
+}
+
+#create a dataframe or tabular data
+df=pd.DataFrame(data)
+print(df)
+#create a total salary column
+print("-----------------------")
+total_salary=df["salary"].sum()
+print("Total Salary:", total_salary)
+
+# average salary
+print("-----------------------")
+average_salary=df["salary"].mean()
+print("Average Salary:", average_salary)
+
+# create a tabular data for age and salary
+print("-----------------------")
+age_salary_df=df[["age","salary"]]
+print(age_salary_df)
+
+# create a bar chart for employee name who get > salary than average salary
+print("-----------------------")
+high_earners=df[df["salary"] > average_salary]
+print(high_earners)
 
 
-employees = pd.DataFrame(
-	{
-		"name": [
-			"Ava Patel",
-			"Liam Chen",
-			"Mia Johnson",
-			"Noah Williams",
-			"Sophia Garcia",
-			"Ethan Brown",
-			"Isabella Davis",
-			"Lucas Wilson",
-			"Amelia Martinez",
-			"James Anderson",
-			"Charlotte Taylor",
-			"Benjamin Thomas",
-		],
-		"department": [
-			"Engineering",
-			"Engineering",
-			"Engineering",
-			"Sales",
-			"Sales",
-			"Sales",
-			"Marketing",
-			"Marketing",
-			"Marketing",
-			"Human Resources",
-			"Human Resources",
-			"Human Resources",
-		],
-		"salary": [
-			92000,
-			85000,
-			98000,
-			72000,
-			68000,
-			76000,
-			70000,
-			74000,
-			78000,
-			64000,
-			67000,
-			69000,
-		],
-	}
-)
+# show department wise salary
+print("-----------------------")
+print(df.groupby("department")["salary"].sum())
 
-department_averages = employees.groupby("department")["salary"].mean()
-overall_average = employees["salary"].mean()
-above_average_employees = employees[employees["salary"] > overall_average]
+# show two bar chart for department wise salary
+department_salary=df.groupby("department")["salary"].sum()
+print("-----------------------")
+print(department_salary)
 
-print("Employee data:")
-print(employees.to_string(index=False))
-print("\nAverage salary by department:")
-print(department_averages.to_string())
-print(f"\nOverall average salary: ${overall_average:,.2f}")
-print("\nEmployees earning above the overall average:")
-print(above_average_employees.to_string(index=False))
+# display data of high earners in bar chart	
 
-department_averages.sort_values(ascending=False).plot(
-	kind="bar",
-	color="#3185a6",
-	edgecolor="#235b73",
-)
-plt.title("Average Salary by Department")
-plt.xlabel("Department")
-plt.ylabel("Average salary ($)")
-plt.xticks(rotation=30, ha="right")
-plt.grid(axis="y", linestyle="--", alpha=0.35)
-plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda value, _: f"${value:,.0f}"))
-plt.tight_layout()
+plt.title("High Earners Salary")
+plt.bar(high_earners["name"],high_earners["salary"], color='coral')
+plt.xlabel("Employee Name")
+plt.ylabel("Salary")
+
+# display data in line chart
+# plt.title("High Earners Salary")
+# plt.plot(high_earners["name"],high_earners["salary"], color='coral', marker='o')
+# plt.xlabel("Employee Name")
+# plt.ylabel("Salary")
+
 plt.show()
+
