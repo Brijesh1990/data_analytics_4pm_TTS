@@ -33,8 +33,21 @@
 # print(c)
 
 # string to int
-a=int("10")
-b=int("20")
-c=a+b 
-print(c)
+# a=int("10")
+# b=int("20")
+# c=a+b 
+# print(c)
 
+
+# name="kalpit"
+# a=100
+# b=10.256
+# print("name","a","b")
+
+
+# string formatter
+
+name="kalpit"
+a=100
+b=10.256
+print(f"{name}{"\n"} {a} {"\n"}{b}")
