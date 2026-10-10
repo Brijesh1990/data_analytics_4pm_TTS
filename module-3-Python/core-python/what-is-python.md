@@ -169,8 +169,6 @@ where we assign some values
 examples : =, ==, , != etc
 ```
 
-
-
 3. **comparision operator** :
 
 ```
