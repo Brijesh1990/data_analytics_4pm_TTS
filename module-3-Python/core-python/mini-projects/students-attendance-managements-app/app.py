@@ -17,7 +17,6 @@ print(df)
 print('--------------------------------------')
 total_days=df["total_days"].sum()
 print("Total attendance days is :",total_days)
-
 # total absent days 
 print('--------------------------------------')
 absent_days=df["absent_days"].sum()
