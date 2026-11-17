@@ -99,7 +99,6 @@
 #     print("odd number")
 
 
-
 # w.a.p to check a year is leap year or not take input from users
 
 # year=int(input("Enter a year :"))
@@ -119,51 +118,66 @@
 #     print('your credentials is wrong')
 
 # w.a.p to make choice based login take input from users 
-print("===================================================")
-print("===========multiple choice based login app==========")
-print("===================================================")
-print("1. login as admin")
-print("2. login as developer")
-print("3. login as manager")
-print("4. login as faculty")
-print("5. exit")
 
-while True:
-    choice=int(input("Enter your choice :"))
-    if choice==1:
-        email=input("Enter a email :")
-        password=input("Enter a password :")
+# print("===================================================")
+# print("===========multiple choice based login app==========")
+# print("===================================================")
+# print("1. login as admin")
+# print("2. login as developer")
+# print("3. login as manager")
+# print("4. login as faculty")
+# print("5. exit")
 
-        if email=='admin@gmail.com' and password=='admin123':
-            print("you are logged in as admin successfully")
-        else:
-            print('your credentials is wrong')
-    elif choice==2:
-            email=input("Enter a email :")
-            password=input("Enter a password :")
+# while True:
+#     choice=int(input("Enter your choice :"))
+#     if choice==1:
+#         email=input("Enter a email :")
+#         password=input("Enter a password :")
+
+#         if email=='admin@gmail.com' and password=='admin123':
+#             print("you are logged in as admin successfully")
+#         else:
+#             print('your credentials is wrong')
+#     elif choice==2:
+#             email=input("Enter a email :")
+#             password=input("Enter a password :")
     
-            if email=='developer@gmail.com' and password=='developer23':
-                print("you are logged in as developer successfully")
-            else:
-                print('your credentials is wrong')
-    elif choice==3:
-                email=input("Enter a email :")
-                password=input("Enter a password :")
+#             if email=='developer@gmail.com' and password=='developer23':
+#                 print("you are logged in as developer successfully")
+#             else:
+#                 print('your credentials is wrong')
+#     elif choice==3:
+#                 email=input("Enter a email :")
+#                 password=input("Enter a password :")
         
-                if email=='manager@gmail.com' and password=='manager23':
-                    print("you are logged in as manager successfully")
-                else:
-                    print('your credentials is wrong')
-    elif choice==4:
-                email=input("Enter a email :")
-                password=input("Enter a password :")
+#                 if email=='manager@gmail.com' and password=='manager23':
+#                     print("you are logged in as manager successfully")
+#                 else:
+#                     print('your credentials is wrong')
+#     elif choice==4:
+#                 email=input("Enter a email :")
+#                 password=input("Enter a password :")
             
-                if email=='faculty@gmail.com' and password=='faculty23':
-                    print("you are logged in as faculty successfully")
-                else:
-                    print('your credentials is wrong')
-    elif choice==5:
-                print('select wrong choice')
-                break
+#                 if email=='faculty@gmail.com' and password=='faculty23':
+#                     print("you are logged in as faculty successfully")
+#                 else:
+#                     print('your credentials is wrong')
+#     elif choice==5:
+#                 print('select wrong choice')
+#                 break
     
     
+# looping statements :
+
+# loop is check a numbers of iteration repeat again and again there we used loop
+# loop is repeated a numbers of iteration again and again 
+
+# types of loop in python 
+
+# for loop
+# while loop
+# do while : note python does not support do while
+
+# loop control flow 
+# continue
+# break
